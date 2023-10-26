@@ -47,6 +47,7 @@ body {
 
     width: 100%;
     min-height: 100%;
+
     box-sizing: border-box;
     padding: 60px 10% 10px 10%;
     z-index: 1;
@@ -64,6 +65,7 @@ body {
 #snippet-container, #pastebox-container {
     border: solid 2px white;
     min-width: 400px;
+    min-height: 400px;
 }
 
 @media screen and (max-width: 800px) {
