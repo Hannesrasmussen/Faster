@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 
 // Components
-import CloseButton from '../../buttons/CloseButton';
+import CloseButton from '../../buttons/NormalButton';
 
 import './SaveModal.css'
 

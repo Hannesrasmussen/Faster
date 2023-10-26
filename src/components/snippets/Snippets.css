@@ -1,5 +1,6 @@
 #snippet-container {
     width: 50%;
+    height: fit-content;
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -79,5 +80,16 @@
   background-color: rgb(77, 77, 77);
 }.snippet-code:hover {
   cursor:text;
+}
+
+.no-snippets-found {
+  text-align: center;
+  padding: 10%;
+  color: rgb(217, 217, 217);
+  border-radius: 5px;
+  background-color: grey;
+  font-family: Montserrat;
+  font-weight: 300;
+  margin-bottom: 10px;
 }
 

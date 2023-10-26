@@ -63,9 +63,10 @@ body {
 }
 
 #snippet-container, #pastebox-container {
-    border: solid 2px white;
+    /*border: solid 1px white;*/
+    border-radius: 5px;
     min-width: 400px;
-    min-height: 400px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
 }
 
 @media screen and (max-width: 800px) {

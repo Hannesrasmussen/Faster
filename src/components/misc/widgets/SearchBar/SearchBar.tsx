@@ -27,7 +27,7 @@ function SearchBar(props: ISearchBar) {
             <input 
                 onChange={function(e){updateSearchValue(e)}} 
                 value={searchState} 
-                placeholder='Ex.. CSS Custom toolbar'
+                placeholder='Search..'
             />
         </div>
     )

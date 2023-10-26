@@ -12,8 +12,10 @@ import { Context } from '../../context/Context';
 
 import '../main/Main.css'
 import './Snippets.css';
+import NormalButton from '../misc/buttons/NormalButton';
 
 interface IState {
+  active : boolean,
   language : string,
   name: string
 }
@@ -21,6 +23,7 @@ interface IState {
 function SnippetContainer() {
 
   const [State, setState] = useState<IState>({
+    active: false,
     language : '',
     name: ''
   });
@@ -31,8 +34,16 @@ function SnippetContainer() {
   const context = useContext(Context);
 
   function renderSnippets() {
-    const snippets = context?.State.snippets || []; // Default to an empty array if context or snippets is falsy
-    return snippets.map((snippet) => {
+    const snippets = context?.State.snippets || [];
+    if (snippets.length === 0) {
+      return (
+        <div>
+          <div className='no-snippets-found'>Empty</div>
+          <NormalButton text={'Import code'} function={function(){}}/>
+        </div>
+      )
+    } else {
+      return snippets.map((snippet) => {
         // Render logic here (for example, rendering to a UI component)
         if (!snippet) {
             context?.displayFeedbackModal('error', 'Something went terribly wrong..');
@@ -40,7 +51,7 @@ function SnippetContainer() {
         } else {
             return (
                 <Snippet
-                    key={snippet.id} // Don't forget to provide a unique key for React components in an array
+                    key={snippet.id}
                     id={snippet.id}
                     name={snippet.name}
                     language={snippet.language}
@@ -50,6 +61,7 @@ function SnippetContainer() {
             );
         }
     });
+    }
   }
 
   function updateSnippets(search: string) {
@@ -60,7 +72,9 @@ function SnippetContainer() {
 
   return (
     <div id='snippet-container'>
+      {State.active ?
       <SearchBar function={updateSnippets}/>
+      : ''}
       <div id='snippets'>
         {renderSnippets()}
       </div>

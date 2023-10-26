@@ -19,8 +19,30 @@ function Pastebox() {
   }
 
   let placeholder = `#include <iostream>
+  #include <string>
+  
+  class User {
+  private:
+      std::string username;
+      int age;
+  
+  public:
+      // Constructor
+      User(std::string name, int userAge) : username(name), age(userAge) {}
+  
+      // Method to display user information
+      void displayUserInfo() {
+          std::cout << "Username: " << username << std::endl;
+          std::cout << "Age: " << age << " years old" << std::endl;
+      }
+  };
+  
   int main() {
-      std::cout << "This is an example!" << std::endl;
+      // Creating an instance of the User class
+      User user1("Alice", 25);
+  
+      user1.greetUser();
+  
       return 0;
   }`;
 

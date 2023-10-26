@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Components
-import CloseButton from '../../buttons/CloseButton'
+import CloseButton from '../../buttons/NormalButton'
 
 import './FeedbackModal.css';
 
@@ -20,7 +20,8 @@ function FeedbackModal(props: IModal) {
             <div className={'feedback-modal-text'}>
                 <span>{props.message}</span>
             </div>
-            <CloseButton text='OK' function={props.closeFunction}/>
+            {/*<CloseButton text='OK' function={props.closeFunction}/>*/}
+            <button className={'close-button'} onClick={()=>{props.closeFunction()}}>OK</button>
         </div>
     )
 }
