@@ -9,9 +9,6 @@ import Pastebox from '../pastebox/Pastebox';
 import SettingsButton from '.././misc/buttons/SettingsButton'
 import FeedbackModalContainer from '../misc/modals/FeedbackModal/FeedbackModalContainer';
 
-// Assets
-import logo from '../../assets/img/logo192.png'
-
 import './Main.css';
 import SaveModalContainer from '../misc/modals/SaveModal/SaveModalContainer';
 
