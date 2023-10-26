@@ -1,0 +1,75 @@
+#feedback-modal-container {
+    positioN: absolute;
+    display: flex;
+    justify-content: left;
+    align-items:center;
+    overflow: hidden;
+    height: 75px;
+    width: 100%;
+    bottom: 0px;
+    margin: 20px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 4;
+}
+.feedback-modal {
+    background-color: white;
+    width: fit-content;
+    max-height: 30px;
+    overflow: hidden;
+    display: flex;
+    pointer-events: all;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.089);
+    opacity: 100%;
+    transition: 0.5s;
+}
+.feedback-modal .close-button{
+    height: 30px;
+    padding: 5px;
+    margin-left: 20px;
+    box-sizing: border-box;
+    width: 50px;
+    background-color: black;
+    border: solid 2px white;
+    color: white;
+}
+.feedback-modal-icon {
+    width: 30px;
+    height: 30px;
+}
+.feedback-modal-text {
+    font-family: arial;
+    font-size: 15px;
+    font-weight: 300;
+    text-align:center;
+    line-height: 30px;
+    margin: auto;
+    margin-left: 20px;
+    height: 30px;
+}
+
+/* Modal icon colors */
+.feedback-modal-card-info{
+    background-color: rgb(119, 196, 123);
+    width: 10px;
+}
+.feedback-modal-card-warning{
+    background-color: rgb(211, 171, 72);
+    width: 10px;
+}
+.feedback-modal-card-error{
+    background-color: rgb(201, 40, 40);
+    width: 10px;
+}
+
+.fade {
+    animation: fade 0.2s ease-in-out;
+}
+
+@keyframes fade {
+    0% { opacity: 0%; }
+    50% { opacity: 50%; }
+    100% { opacity: 100%; }
+}

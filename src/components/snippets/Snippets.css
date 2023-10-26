@@ -1,0 +1,83 @@
+#snippet-container {
+    width: 50%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-top: 20px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(40, 40, 40, 0.497);
+}
+
+ /* width */
+ ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+#snippets {
+    display: flex;
+    height: 92%;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: linear-gradient(black 5%,)
+}
+
+.snippet {
+    font-family: Montserrat;
+    width: 98%;
+    min-height: fit-content;
+    margin: 5px;
+    padding: 0px;
+    border: solid 1px white;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.089);
+    box-sizing: border-box;
+    transition: 0.2s;
+    flex-shrink: 0;
+} .snippet:hover {
+  transition: 0.2s;
+  transform: scale(0.995);
+  filter:saturate(75%);
+}
+.snippet-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.snippet-text {
+  color: white;
+  font-weight: 600;
+  width:80%;
+  margin: none;
+  vertical-align: top;
+  user-select: none;
+}
+.snippet-code {
+  color: white;
+  padding: 10px;
+  margin: 0;
+  font-size: 10px;
+  display: none;
+  background-color: rgb(77, 77, 77);
+}.snippet-code:hover {
+  cursor:text;
+}
+
