@@ -5,15 +5,17 @@ import ISnippet from '../data/interfaces';
 import { parse } from 'path';
 
 interface IState {
-    settingsActive: boolean;
+    settingsActive: boolean
     feedbackModal: {
-        modalActive: boolean;
-        modalType: string;
-        modalMessage: string;
-        modalOpacity: string;
+        modalActive: boolean
+        modalType: string
+        modalMessage: string
+        modalOpacity: string
     },
     saveModal: {
         modalActive: boolean
+        name: string,
+        code: string,
     },
     snippets: ISnippet[] | undefined[] | null[]
 }
@@ -22,9 +24,10 @@ interface IGlobalProps {
     openSettings(): void;
     displayFeedbackModal(type: string, message: string): void;
     closeFeedbackModal(): void;
-    displaySaveModal(): void;
+    displaySaveModal(code: string): void;
     closeSaveModal(): void;
-    getSnippetsFromLocalStorage(): ISnippet[]
+    getSnippetsFromLocalStorage(): ISnippet[];
+    saveSnippetsToLocalStorage(snippet: ISnippet): void;
     State: IState;
 }
 
@@ -41,7 +44,9 @@ export function ContextProvider(props: { children: ReactNode }) {
             modalOpacity:'0%'
         },
         saveModal: {
-            modalActive: false
+            modalActive: false,
+            name: '',
+            code: ''
         },
         snippets: getSnippetsFromLocalStorage()
     });
@@ -65,6 +70,29 @@ export function ContextProvider(props: { children: ReactNode }) {
             // Return an empty array if no data is found in localStorage
             return [];
         }
+    }
+
+    function saveSnippetsToLocalStorage(snippet: ISnippet) {
+        try {
+            if (localStorage) {
+                // Get current snippets from localStorage or an empty array if not available
+                var existingSnippets: ISnippet[] = JSON.parse(localStorage.getItem('snippets') || '[]');
+                var newSnippets: ISnippet[] = [...existingSnippets, snippet];
+    
+                // Update state and localStorage
+                setState(prevState => ({
+                    ...prevState,
+                    snippets: newSnippets
+                }));
+    
+                localStorage.setItem('snippets', JSON.stringify(newSnippets));
+                displayFeedbackModal('info', 'Successfully added new code!');
+            } else {
+                displayFeedbackModal('error', 'Could not access local storage');
+            }
+        } catch (error) {
+            displayFeedbackModal('error', 'Could not store the code in local storage');
+        }   
     }
 
     function openSettings() {
@@ -96,22 +124,26 @@ export function ContextProvider(props: { children: ReactNode }) {
         }));
     }
 
-    function displaySaveModal() {
-        displayFeedbackModal('error','Save function has not been added yet.')
-        /*
+    function displaySaveModal(code: string) {
+        // displayFeedbackModal('error','Save function has not been added yet.')
+        let snippetCode = code;
+
         setState(prevState => ({
             ...prevState,
             saveModal: {
                 modalActive: true,
+                name: '',
+                code: snippetCode
             }
         }));
-        */
     }
     function closeSaveModal() {
         setState(prevState => ({
             ...prevState,
             saveModal: {
                 modalActive: false,
+                name: '',
+                code: ''
             }
         }));
     }
@@ -119,6 +151,7 @@ export function ContextProvider(props: { children: ReactNode }) {
     return (
         <Context.Provider 
         value={{ 
+            saveSnippetsToLocalStorage,
             getSnippetsFromLocalStorage,
             openSettings, 
             displayFeedbackModal, 

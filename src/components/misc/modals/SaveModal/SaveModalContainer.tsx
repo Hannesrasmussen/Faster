@@ -6,14 +6,15 @@ import SaveModal from './SaveModal';
 import './SaveModal.css';
 
 interface ISaveModalContainer{
+  code: string,
   close(): void
 }
 
 function SaveModalContainer(props: ISaveModalContainer) {
 
   return (
-    <div id={'save-modal-container'}>
-      <SaveModal close={props.close}/>
+    <div id={'save-modal-container'} className='fade'>
+      <SaveModal code={props.code} close={props.close}/>
     </div> 
   )
 }
