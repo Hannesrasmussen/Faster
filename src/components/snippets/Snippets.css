@@ -7,7 +7,16 @@
     margin-top: 20px;
     margin: 10px;
     padding: 10px;
-    background-color: rgba(40, 40, 40, 0.497);
+}
+
+.snippet-container-heading {
+  text-align: left;
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: grey;
+  user-select: none;
 }
 
  /* width */
@@ -46,7 +55,7 @@
     min-height: fit-content;
     margin: 5px;
     padding: 0px;
-    border: solid 1px white;
+    border: solid 1px whitesmoke;
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.089);
@@ -54,18 +63,27 @@
     transition: 0.2s;
     flex-shrink: 0;
 } .snippet:hover {
+  
   transition: 0.2s;
   transform: scale(0.995);
   filter:saturate(75%);
 }
+
+.snippet button, .snippet button svg{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+}
+
 .snippet-header {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
+
 .snippet-text {
-  color: white;
-  font-weight: 600;
+  color: rgb(255, 255, 255);
+  font-weight: 300;
   width:80%;
   margin: none;
   vertical-align: top;
@@ -78,21 +96,25 @@
   font-size: 10px;
   display: none;
   background-color: rgb(77, 77, 77);
+  white-space: pre-line;
 }.snippet-code:hover {
   cursor:text;
 }
 
 .no-snippets-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   padding: 10%;
-  margin: 5px;
-  color: rgb(217, 217, 217);
+  margin: 0;
+  color: grey;
   border-radius: 5px;
-  background-color: grey;
   font-family: Montserrat;
   font-weight: 300;
-  margin-bottom: 10px;
+  user-select: none;
 }
 .import-button {
-  margin-left: 5px;
+  margin: auto;
+  margin-top: 10px;
 }

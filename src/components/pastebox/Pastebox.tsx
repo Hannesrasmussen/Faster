@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 
 import '../main/Main.css'
 import './Pastebox.css'
@@ -11,47 +11,39 @@ import {Context} from '../../context/Context'
 
 function Pastebox() {
 
-  // Context
+  const [Code, setCode] = useState<string>('');
+
+  useEffect(() => {
+  }, [Code]);
+
+    // Context
   const context = useContext(Context);
-  if (!context) {
-    // In case context is undefined. It never is though.
-    return null;
+
+  function updateCode(e:any) {
+    setCode(e.target.value)
   }
 
-  let placeholder = `#include <iostream>
-  #include <string>
+  function onSave() {
+    if (!context) {
+      // In case context is undefined. It never is though.
+      return null;
+    }
+    if (Code === '') {
+      context.displayFeedbackModal('warning', "You have not entered any code!")
+    } else {
+      context.displaySaveModal(Code)
+    }
+    
+  }
   
-  class User {
-  private:
-      std::string username;
-      int age;
-  
-  public:
-      // Constructor
-      User(std::string name, int userAge) : username(name), age(userAge) {}
-  
-      // Method to display user information
-      void displayUserInfo() {
-          std::cout << "Username: " << username << std::endl;
-          std::cout << "Age: " << age << " years old" << std::endl;
-      }
-  };
-  
-  int main() {
-      // Creating an instance of the User class
-      User user1("Alice", 25);
-  
-      user1.greetUser();
-  
-      return 0;
-  }`;
-
+  let placeholder = 'console.log("hello world")';
 
   return (
     <div id='pastebox-container'>
-      <textarea id='pastebox' placeholder={placeholder}></textarea>
+      <p className='pastebox-container-heading'>Paste or write some code</p>
+      <textarea spellCheck={false} id='pastebox' placeholder={placeholder} onChange={updateCode}></textarea>
       <div id='pastebox-toolbar'>
-        <ToolbarButton text={'Save'} function={function(){context.displaySaveModal()}}/>
+        <ToolbarButton text={'Save'} function={onSave}/>
         <ToolbarButton text={'Copy'} function={function(){}}></ToolbarButton>
         <ToolbarButton text={'Paste'} function={function(){}}></ToolbarButton>
       </div>

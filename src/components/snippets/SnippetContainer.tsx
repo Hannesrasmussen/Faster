@@ -40,7 +40,7 @@ function SnippetContainer() {
         <div>
           <div className='no-snippets-found'>
             Don't want to start from scratch?  
-            <NormalButton class={'import-button'} text={'Import code'} function={importSnippets}/>
+            <NormalButton class={'import-button'} text={'Import codes'} function={importSnippets}/>
           </div>
           
         </div>
@@ -79,6 +79,7 @@ function SnippetContainer() {
 
   return (
     <div id='snippet-container'>
+      <p className='snippet-container-heading'>Search for code</p>
       {State.active ?
       <SearchBar function={updateSnippets}/>
       : ''}

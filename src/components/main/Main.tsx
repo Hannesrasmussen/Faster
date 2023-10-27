@@ -27,6 +27,7 @@ function Main() {
       {context.State.saveModal.modalActive ? 
         <SaveModalContainer
           close={context.closeSaveModal}
+          code={context.State.saveModal.code}
         />
       : ''}
       {context.State.feedbackModal.modalActive ? 
