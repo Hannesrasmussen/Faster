@@ -15,7 +15,7 @@
 }
 
  /* width */
- ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 10px;
   }
   
@@ -47,6 +47,7 @@
     background-color: rgb(77, 77, 77);
     border-radius: 5px;
     color: white;
+    border: solid 1px rgb(192, 192, 192);
 
     font-family: Montserrat;
 
@@ -65,7 +66,3 @@
     box-sizing: border-box;
 }
 
-::placeholder {
-  color: rgb(101, 101, 101);
-  opacity: 1; /* Firefox */
-}

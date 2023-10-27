@@ -55,12 +55,13 @@ button {
     width: 100%;
     height: 100%;
     transition: 0.2s;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 #settings-button-active svg{
     width: 100%;
     height: 100%;
     color: white;
+    transform: scale(0.9);
 }
 .normal-button {
     width: fit-content;

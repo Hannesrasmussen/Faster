@@ -11,18 +11,21 @@ body {
     display: flex;
     position: absolute;
     justify-content: space-between;
-    opacity: 20%;
+    opacity: 100%;
     z-index: 2;
     transition: 1s;
-} #site-header:hover {
-    opacity: 100%;
-    transition: 0.2s;
+    background-color: grey;
+    user-select: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
+
 }
 
 #header-title {
     font-family: Montserrat;
     font-weight: 300;
     font-size: 20px;
+    line-height: 10px;
+    color: white;
 }
 
 #header-settings {
@@ -68,6 +71,11 @@ body {
     min-width: 400px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.200);
 }
+
+::placeholder {
+    color: rgb(171, 171, 171);
+    opacity: 1; /* Firefox */
+  }
 
 @media screen and (max-width: 800px) {
     #snippet-container, #pastebox-container {

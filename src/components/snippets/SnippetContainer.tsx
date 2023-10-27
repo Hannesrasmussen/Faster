@@ -23,7 +23,7 @@ interface IState {
 function SnippetContainer() {
 
   const [State, setState] = useState<IState>({
-    active: false,
+    active: true,
     language : '',
     name: ''
   });
@@ -38,8 +38,11 @@ function SnippetContainer() {
     if (snippets.length === 0) {
       return (
         <div>
-          <div className='no-snippets-found'>Empty</div>
-          <NormalButton text={'Import code'} function={function(){}}/>
+          <div className='no-snippets-found'>
+            Don't want to start from scratch?  
+            <NormalButton class={'import-button'} text={'Import code'} function={importSnippets}/>
+          </div>
+          
         </div>
       )
     } else {
@@ -67,6 +70,10 @@ function SnippetContainer() {
   function updateSnippets(search: string) {
     if (search == '' || search == undefined) {
     }
+  }
+
+  function importSnippets() {
+    context?.displayFeedbackModal('error', 'This function has not been added yet')
   }
 
 

@@ -59,8 +59,6 @@ export function ContextProvider(props: { children: ReactNode }) {
                 parsedData = JSON.parse(storedData);
                 return parsedData;
             } catch (error) {
-                // Handle JSON parsing error (invalid JSON string)
-                displayFeedbackModal('warning','No snippets were found')
                 return [];
             }
         } else {
