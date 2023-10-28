@@ -6,7 +6,7 @@
     overflow: hidden;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.200);
+    background-color: rgba(0, 0, 0, 0.450);
     z-index: 3;
 }
 #save-modal {
@@ -109,6 +109,36 @@
     width: 25%;
 }
 
+#save-modal-color-container {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: white;
+    border: solid 1px rgb(209, 209, 209);
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    height: fit-content;
+}
+.save-modal-color {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border: solid 1px rgb(209, 209, 209);
+    border-radius: 5px;
+} .save-modal-color:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+    transition: 0.1s;
+}
+#save-modal-color-active {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    border: solid 5px rgb(164, 164, 164);
+    border-radius: 5px;
+}
+
 #save-modal-code {
     padding: 10px;
     margin-bottom: 10px;
@@ -128,6 +158,8 @@
     font-family: Montserrat;
     overflow-y: auto;
 }
+
+
 
 .save-button {
     width: 100px;

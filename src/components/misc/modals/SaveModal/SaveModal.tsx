@@ -71,6 +71,20 @@ function SaveModal(props: ISaveModal) {
           </select>
         </div>
 
+        
+        <div className='save-modal-section'>
+          <p className={'save-modal-heading'}>Pick a color</p>
+          <div id={'save-modal-color-container'}>
+            <div id={'save-modal-color-active'} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
+            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(56, 39, 50)'}}></div>
+            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(120, 60, 50)'}}></div>
+            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(145, 39, 50)'}}></div>
+            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
+            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
+            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
+          </div>
+        </div>
+
         <div className='save-modal-section'>
           <p className={'save-modal-heading'}>Preview your code</p>
           <code id={'save-modal-code'}>{props.code}</code>
