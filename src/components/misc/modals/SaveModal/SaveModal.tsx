@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 
 // Components
 import NormalButton from '../../buttons/NormalButton';
+import Color from './subComponents/Color'
 
 // Context
 import { Context } from '../../../../context/Context'
@@ -23,7 +24,7 @@ function SaveModal(props: ISaveModal) {
     name: '',
     code: props.code,
     language: '',
-    color: 'grey'
+    color: '#a1a1a1'
   })
 
   function saveSnippet(){
@@ -46,6 +47,13 @@ function SaveModal(props: ISaveModal) {
       language: e.target.value
     }));
   }
+  function updateColor(e: any) {
+    setState(prevState => ({
+      ...prevState,
+      color: e.target.style.backgroundColor
+    }));
+  }
+
 
   const context = useContext(Context);
   
@@ -75,13 +83,13 @@ function SaveModal(props: ISaveModal) {
         <div className='save-modal-section'>
           <p className={'save-modal-heading'}>Pick a color</p>
           <div id={'save-modal-color-container'}>
-            <div id={'save-modal-color-active'} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
-            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(56, 39, 50)'}}></div>
-            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(120, 60, 50)'}}></div>
-            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(145, 39, 50)'}}></div>
-            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
-            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
-            <div id={''} className={'save-modal-color'} style={{backgroundColor: 'rgb(91, 50, 50)'}}></div>
+            <Color active={true} function={updateColor} color={'#a1a1a1'}/>
+            <Color active={false} function={updateColor} color={'#ab5757'}/>
+            <Color active={false} function={updateColor} color={'#ab8557'}/>
+            <Color active={false} function={updateColor} color={'#61ab57'}/>
+            <Color active={false} function={updateColor} color={'#57ab96'}/>
+            <Color active={false} function={updateColor} color={'#576bab'}/>
+            <Color active={false} function={updateColor} color={'#9657ab'}/>
           </div>
         </div>
 
