@@ -3,6 +3,7 @@ import React, {useState, useEffect, useContext} from 'react'
 // Components
 import NormalButton from '../../buttons/NormalButton';
 import ColorContainer from './subComponents/ColorContainer';
+import Select from '../../select/Select';
 
 // Context
 import { Context } from '../../../../context/Context'
@@ -54,8 +55,11 @@ function SaveModal(props: ISaveModal) {
     }));
   }
 
-
   const context = useContext(Context);
+  if (!context) {
+    // In case context is undefined. It never is... but.. y'know.. typescript
+    return null;
+  }
   
   return (
     <div id={'save-modal'} className='fade'>
@@ -69,14 +73,14 @@ function SaveModal(props: ISaveModal) {
           <input id={'save-modal-name'} onChange={function(e){updateName(e)}} className={'save-modal-input'}></input>
 
           <p className={'save-modal-heading'}>Programming Language</p>
-          <select onChange={function(e){updateLanguage(e)}} id={'save-modal-language'} className={'save-modal-select'}>
-            <option>Javascript</option>
-            <option>Typescript</option>
-            <option>CSS</option>
-            <option>HTML</option>
-            <option>C#</option>
-            <option>C++</option>
-          </select>
+          <Select defaultValue={context.State.settings.defaultLanguage} className={'save-modal-select'}function={function(e:any){updateLanguage(e)}}>
+                <option>Javascript</option>
+                <option>Typescript</option>
+                <option>CSS</option>
+                <option>HTML</option>
+                <option>C#</option>
+                <option>C++</option>
+          </Select>
         </div>
 
         

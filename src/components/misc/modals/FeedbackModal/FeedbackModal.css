@@ -10,7 +10,7 @@
     margin: 20px;
     pointer-events: none;
     user-select: none;
-    z-index: 4;
+    z-index: 9999;
 }
 .feedback-modal {
     background-color: white;
