@@ -38,7 +38,7 @@ function Main() {
       : ''}
 
       <header id='site-header'>
-        <div></div>
+        <div id='version-number'>alpha 0.1</div>
         <p id='header-title'>FASTER</p>
         {/* <img id='site-logo' alt='site logo' src={logo}/> */}
         <SettingsButton 
