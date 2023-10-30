@@ -11,6 +11,7 @@ import FeedbackModalContainer from '../misc/modals/FeedbackModal/FeedbackModalCo
 
 import './Main.css';
 import SaveModalContainer from '../misc/modals/SaveModal/SaveModalContainer';
+import Settings from '../settings/Settings';
 
 function Main() {
   const context = useContext(Context);
@@ -45,6 +46,10 @@ function Main() {
           function={context.openSettings}
         />
       </header>
+      {context.State.settingsActive ?
+        <Settings active={context.State.settingsActive}/> : ''
+      }
+      
       <div id='content'>
         <SnippetContainer/>
         <Pastebox/>

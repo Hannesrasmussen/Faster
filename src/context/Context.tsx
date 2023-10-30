@@ -5,6 +5,9 @@ import ISnippet from '../data/interfaces';
 
 interface IState {
     settingsActive: boolean
+    settings: {
+        defaultLanguage: string
+    },
     feedbackModal: {
         modalActive: boolean
         modalType: string
@@ -21,6 +24,8 @@ interface IState {
 
 interface IGlobalProps {
     openSettings(): void;
+    closeSettings(): void;
+    saveSettingsToLocalStorage(setting: any, newValue: any): void;
     displayFeedbackModal(type: string, message: string): void;
     closeFeedbackModal(): void;
     displaySaveModal(code: string): void;
@@ -36,6 +41,7 @@ export const Context = createContext<IGlobalProps | undefined>(undefined);
 export function ContextProvider(props: { children: ReactNode }) {
     const [State, setState] = useState<IState>({
         settingsActive: false,
+        settings: getSettingsFromLocalStorage(),
         feedbackModal: {
             modalActive: false,
             modalType: '',
@@ -51,7 +57,39 @@ export function ContextProvider(props: { children: ReactNode }) {
     });
 
     useEffect(() => {
+        localStorage.setItem('settings',JSON.stringify(State.settings));
     }, [State]);
+
+    function getSettingsFromLocalStorage() {
+        const settings: string | null = localStorage.getItem("settings");
+
+        if (settings) {
+            try {
+                // Parse the JSON string and return as an array of Snippets
+                var parsedData;
+                parsedData = JSON.parse(settings);
+                return parsedData;
+            } catch (error) {
+                return [];
+            }
+        } else {
+            // Default settings:
+            let defaultSettings = {
+                defaultLanguage: 'Javascript'
+            }
+            localStorage.setItem('settings',JSON.stringify(defaultSettings));
+        }
+    }
+    function saveSettingsToLocalStorage(setting: string, newValue: any) {
+        setState(prevState => ({
+            ...prevState,
+            settings: {
+                ...prevState.settings,
+                [setting]: newValue
+            }
+        } as IState));
+    }
+    
 
     function getSnippetsFromLocalStorage(): ISnippet[] {
         const storedData: string | null = localStorage.getItem("snippets");
@@ -99,7 +137,16 @@ export function ContextProvider(props: { children: ReactNode }) {
     }
 
     function openSettings() {
-        displayFeedbackModal('error', 'Settings have not been added yet');
+        setState(prevState => ({
+            ...prevState,
+            settingsActive: true
+        }));
+    }
+    function closeSettings() {
+        setState(prevState => ({
+            ...prevState,
+            settingsActive: false
+        }));
     }
 
     function displayFeedbackModal(type: string, message: string) {
@@ -156,7 +203,9 @@ export function ContextProvider(props: { children: ReactNode }) {
         value={{ 
             saveSnippetsToLocalStorage,
             getSnippetsFromLocalStorage,
-            openSettings, 
+            openSettings,
+            closeSettings, 
+            saveSettingsToLocalStorage,
             displayFeedbackModal, 
             closeFeedbackModal, 
             displaySaveModal, 
