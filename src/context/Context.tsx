@@ -2,7 +2,6 @@ import React, { useState, useEffect, createContext, ReactNode } from 'react';
 
 // Interfaces
 import ISnippet from '../data/interfaces';
-import { parse } from 'path';
 
 interface IState {
     settingsActive: boolean

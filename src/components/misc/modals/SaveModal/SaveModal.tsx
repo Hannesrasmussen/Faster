@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 
 // Components
 import NormalButton from '../../buttons/NormalButton';
+import ColorContainer from './subComponents/ColorContainer';
 
 // Context
 import { Context } from '../../../../context/Context'
@@ -23,7 +24,7 @@ function SaveModal(props: ISaveModal) {
     name: '',
     code: props.code,
     language: '',
-    color: 'grey'
+    color: '#a1a1a1'
   })
 
   function saveSnippet(){
@@ -46,6 +47,13 @@ function SaveModal(props: ISaveModal) {
       language: e.target.value
     }));
   }
+  function updateColor(color: any) {
+    setState(prevState => ({
+      ...prevState,
+      color: color
+    }));
+  }
+
 
   const context = useContext(Context);
   
@@ -71,8 +79,14 @@ function SaveModal(props: ISaveModal) {
           </select>
         </div>
 
+        
         <div className='save-modal-section'>
-          <p className={'save-modal-heading'}>Preview your code</p>
+          <p className={'save-modal-heading'}>Color</p>
+          <ColorContainer updateColor={updateColor}/>
+        </div>
+
+        <div className='save-modal-section'>
+          <p className={'save-modal-heading'}>Code</p>
           <code id={'save-modal-code'}>{props.code}</code>
         </div>
 

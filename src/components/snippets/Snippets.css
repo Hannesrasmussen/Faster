@@ -46,7 +46,7 @@
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    background: linear-gradient(black 5%,)
+    background: whitesmoke;
 }
 
 .snippet {
@@ -63,7 +63,7 @@
     transition: 0.2s;
     flex-shrink: 0;
 } .snippet:hover {
-  
+
   transition: 0.2s;
   transform: scale(0.995);
   filter:saturate(75%);

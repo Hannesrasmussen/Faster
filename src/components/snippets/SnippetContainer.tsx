@@ -4,9 +4,6 @@ import React, {useState, useEffect, useContext} from 'react'
 import Snippet from './Snippet'
 import SearchBar from '../misc/widgets/SearchBar/SearchBar';
 
-// Interface
-import ISnippet from '../../data/interfaces';
-
 // Context
 import { Context } from '../../context/Context';
 
@@ -68,7 +65,7 @@ function SnippetContainer() {
   }
 
   function updateSnippets(search: string) {
-    if (search == '' || search == undefined) {
+    if (search === '' || search === undefined) {
     }
   }
 
