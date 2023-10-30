@@ -11,7 +11,6 @@ function ColorContainer(props: IColorContainer) {
 
   function handleButtonClick(e: any, buttonId: number) {
     setActiveButton(buttonId);
-    console.log(e.target.style.backgroundColor);
     props.updateColor(e.target.style.backgroundColor);
   };
 

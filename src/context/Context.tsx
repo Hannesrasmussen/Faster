@@ -74,11 +74,15 @@ export function ContextProvider(props: { children: ReactNode }) {
     function saveSnippetsToLocalStorage(snippet: ISnippet) {
         try {
             if (localStorage) {
-                // Get current snippets from localStorage or an empty array if not available
                 var existingSnippets: ISnippet[] = JSON.parse(localStorage.getItem('snippets') || '[]');
-                var newSnippets: ISnippet[] = [...existingSnippets, snippet];
-    
-                // Update state and localStorage
+
+                // Find the highest existing id
+                const existingIds = existingSnippets.map(snippet => snippet.id);
+                const maxId = Math.max(...existingIds, 0);
+
+                var newSnippet: ISnippet = { ...snippet, id: maxId + 1 };
+                var newSnippets: ISnippet[] = [...existingSnippets, newSnippet];
+
                 setState(prevState => ({
                     ...prevState,
                     snippets: newSnippets
