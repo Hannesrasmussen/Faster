@@ -8,12 +8,16 @@ import SnippetContainer from '../snippets/SnippetContainer'
 import Pastebox from '../pastebox/Pastebox';
 import SettingsButton from '.././misc/buttons/SettingsButton'
 import FeedbackModalContainer from '../misc/modals/FeedbackModal/FeedbackModalContainer';
-
-import './Main.css';
 import SaveModalContainer from '../misc/modals/SaveModal/SaveModalContainer';
 import Settings from '../settings/Settings';
 
+import './Main.css';
+
+
 function Main() {
+
+  const logo = require('../../img/faster_logo.png');
+
   const context = useContext(Context);
   if (!context) {
     // In case context is undefined. It never is... but.. y'know.. typescript
@@ -40,8 +44,7 @@ function Main() {
 
       <header id='site-header'>
         <div id='version-number'>alpha 0.1</div>
-        <p id='header-title'>FASTER</p>
-        {/* <img id='site-logo' alt='site logo' src={logo}/> */}
+        <img id='site-logo' alt='site logo' src={logo}/>
         <SettingsButton 
           function={context.openSettings}
         />
