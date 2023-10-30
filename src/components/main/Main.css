@@ -4,6 +4,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
+    font-family: Montserrat;
 }
 #site-header {
     width: 100%;
@@ -18,6 +19,12 @@ body {
     user-select: none;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.200);
 
+}
+
+#version-number {
+    font-family: Montserrat;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #header-title {
