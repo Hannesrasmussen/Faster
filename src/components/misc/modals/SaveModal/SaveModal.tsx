@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 
 // Components
 import NormalButton from '../../buttons/NormalButton';
-import Color from './subComponents/Color'
+import ColorContainer from './subComponents/ColorContainer';
 
 // Context
 import { Context } from '../../../../context/Context'
@@ -47,10 +47,10 @@ function SaveModal(props: ISaveModal) {
       language: e.target.value
     }));
   }
-  function updateColor(e: any) {
+  function updateColor(color: any) {
     setState(prevState => ({
       ...prevState,
-      color: e.target.style.backgroundColor
+      color: color
     }));
   }
 
@@ -81,20 +81,12 @@ function SaveModal(props: ISaveModal) {
 
         
         <div className='save-modal-section'>
-          <p className={'save-modal-heading'}>Pick a color</p>
-          <div id={'save-modal-color-container'}>
-            <Color active={true} function={updateColor} color={'#a1a1a1'}/>
-            <Color active={false} function={updateColor} color={'#ab5757'}/>
-            <Color active={false} function={updateColor} color={'#ab8557'}/>
-            <Color active={false} function={updateColor} color={'#61ab57'}/>
-            <Color active={false} function={updateColor} color={'#57ab96'}/>
-            <Color active={false} function={updateColor} color={'#576bab'}/>
-            <Color active={false} function={updateColor} color={'#9657ab'}/>
-          </div>
+          <p className={'save-modal-heading'}>Color</p>
+          <ColorContainer updateColor={updateColor}/>
         </div>
 
         <div className='save-modal-section'>
-          <p className={'save-modal-heading'}>Preview your code</p>
+          <p className={'save-modal-heading'}>Code</p>
           <code id={'save-modal-code'}>{props.code}</code>
         </div>
 

@@ -132,8 +132,6 @@
     transition: 0.1s;
 }
 #save-modal-color-active {
-    width: 45px;
-    height: 45px;
     padding: 5px;
     border: solid 5px rgb(233, 233, 233);
     border-radius: 5px;

@@ -21,14 +21,12 @@ function Main() {
 
   /* Main should not have functions! put them in Context instead! */
 
-
   return (
     <div>
       {context.State.saveModal.modalActive ? 
-        <SaveModalContainer
+      <SaveModalContainer
           close={context.closeSaveModal}
-          code={context.State.saveModal.code}
-        />
+          code={context.State.saveModal.code}/>
       : ''}
       {context.State.feedbackModal.modalActive ? 
       <FeedbackModalContainer 
