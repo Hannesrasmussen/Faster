@@ -85,28 +85,28 @@ body {
     opacity: 1; /* Firefox */
 }
 
- /* width */
- ::-webkit-scrollbar {
+/* width */
+::-webkit-scrollbar {
     width: 10px;
-  }
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
+/* Track */
+::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0);
     padding: 4px;
-  }
+}
   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #a6a6a6;
     border: 2px solid white;
     border-radius: 10px;
-  }
+}
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: rgb(66, 66, 66);
-  }
+}
 
 @media screen and (max-width: 800px) {
     #snippet-container, #pastebox-container {
