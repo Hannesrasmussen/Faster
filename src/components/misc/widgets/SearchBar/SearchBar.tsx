@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 
 import './SearchBar.css'
+import { Context } from '../../../../context/Context';
 
 interface ISearchBar {
     function: Function
@@ -14,8 +15,15 @@ function SearchBar(props: ISearchBar) {
         props.function(searchState);
     }, [searchState]);
 
+    const context = useContext(Context);
+    if (!context) {
+        // In case context is undefined. It never is... but.. y'know.. typescript
+        return null;
+    }
+
     function updateSearchValue(e:any) {
         setSearchState(e.target.value)
+        context?.displayFeedbackModal('error', 'Search has not been added yet')
     }
 
     function callSnippets(){
