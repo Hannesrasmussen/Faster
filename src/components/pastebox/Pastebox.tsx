@@ -44,8 +44,8 @@ function Pastebox() {
       <textarea spellCheck={false} id='pastebox' placeholder={placeholder} onChange={updateCode}></textarea>
       <div id='pastebox-toolbar'>
         <ToolbarButton text={'Save'} function={onSave}/>
-        <ToolbarButton text={'Copy'} function={function(){}}></ToolbarButton>
-        <ToolbarButton text={'Paste'} function={function(){}}></ToolbarButton>
+        <ToolbarButton text={'Copy'} function={function(){context?.displayFeedbackModal('error', 'This function has not been added yet')}}></ToolbarButton>
+        <ToolbarButton text={'Paste'} function={function(){context?.displayFeedbackModal('error', 'This function has not been added yet')}}></ToolbarButton>
       </div>
       
     </div>
