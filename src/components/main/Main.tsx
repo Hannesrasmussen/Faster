@@ -12,6 +12,7 @@ import SaveModalContainer from '../misc/modals/SaveModal/SaveModalContainer';
 import Settings from '../settings/Settings';
 
 import './Main.css';
+import ConfirmModalContainer from '../misc/modals/ConfirmModal/ConfirmModalContainer';
 
 
 function Main() {
@@ -32,6 +33,13 @@ function Main() {
       <SaveModalContainer
           close={context.closeSaveModal}
           code={context.State.saveModal.code}/>
+      : ''}
+      {context.State.confirmModal.modalActive ? 
+      <ConfirmModalContainer
+          close={context.closeConfirmModal}
+          message={context.State.confirmModal.message}
+          function={context.State.confirmModal.function}
+          />
       : ''}
       {context.State.feedbackModal.modalActive ? 
       <FeedbackModalContainer 

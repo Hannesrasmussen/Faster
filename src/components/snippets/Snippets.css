@@ -43,7 +43,7 @@
 
 #snippets {
     display: flex;
-    max-height: 550px;
+    max-height: fit-content;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
@@ -90,13 +90,19 @@
   vertical-align: top;
   user-select: none;
 }
+.snippet-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  display: none;
+  background-color: rgb(77, 77, 77);
+}
 .snippet-code {
   color: white;
   padding: 10px;
   margin: 0;
+  width: 90%;
   font-size: 10px;
-  display: none;
-  background-color: rgb(77, 77, 77);
   white-space: pre-line;
 }.snippet-code:hover {
   cursor:text;
@@ -118,4 +124,37 @@
 .import-button {
   margin: auto;
   margin-top: 10px;
+}
+
+.snippet-toolbar {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 10%;
+}.snippet-toolbar {
+  cursor: default;
+}
+/* Remove button */
+.remove-snippet-button {
+  height: 20px;
+  width: 100%;
+}.remove-snippet-button:hover {
+  cursor: pointer;
+}
+.remove-snippet-button svg{
+  color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+}
+/* favorite button */
+.favorite-button {
+  height: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}.favorite-button:hover {
+  cursor: pointer;
+}
+.favorite-button svg{
+  color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
 }
