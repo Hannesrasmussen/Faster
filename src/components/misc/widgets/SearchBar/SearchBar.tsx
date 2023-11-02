@@ -23,11 +23,7 @@ function SearchBar(props: ISearchBar) {
 
     function updateSearchValue(e:any) {
         setSearchState(e.target.value)
-        context?.displayFeedbackModal('error', 'Search has not been added yet')
-    }
-
-    function callSnippets(){
-        // Do nothing for now
+        props.function();
     }
 
     return (

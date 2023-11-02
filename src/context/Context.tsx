@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext, ReactNode } from 'react';
 
 // Interfaces
 import ISnippet from '../data/interfaces';
+import { ISnippets } from '../data/types';
 
 interface IState {
     settingsActive: boolean
@@ -19,7 +20,7 @@ interface IState {
         name: string,
         code: string,
     },
-    snippets: ISnippet[] | undefined[] | null[]
+    snippets: ISnippets
 }
 
 interface IGlobalProps {
