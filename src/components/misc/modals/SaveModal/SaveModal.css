@@ -8,6 +8,8 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.450);
     z-index: 3;
+
+    animation: fade 0.2s ease-in;
 }
 #save-modal {
     background-color: white;
@@ -157,16 +159,10 @@
     overflow-y: auto;
 }
 
-
-
 .save-button {
     width: 100px;
 }
 
-
-.fade {
-    animation: fade 0.2s ease-in;
-}
 
 @keyframes fade {
     0% { opacity: 0%; }

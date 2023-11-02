@@ -13,7 +13,7 @@ interface ISaveModalContainer{
 function SaveModalContainer(props: ISaveModalContainer) {
 
   return (
-    <div id={'save-modal-container'} className='fade'>
+    <div id={'save-modal-container'}>
       <SaveModal code={props.code} close={props.close}/>
     </div> 
   )

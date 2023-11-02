@@ -20,7 +20,11 @@ function SnippetContainer() {
   const [Snippets, setSnippets] = useState<ISnippet[] | null>(initSnippets());
 
   useEffect(() => {
-  }, [Snippets, context]);
+  }, [Snippets]);
+
+  useEffect(() => {
+    setSnippets(initSnippets);
+  }, [context])
 
   if (!context) {
     return null;
@@ -92,7 +96,6 @@ function SnippetContainer() {
   }
 
   function updateSnippets(search: string) {
-
     switch (search) {
       case '':
         setSnippets(allSnippets);
@@ -101,8 +104,8 @@ function SnippetContainer() {
         // 'No snippets found' or something
         break;
       default:
-        var x = filterSnippets(search);
-        setSnippets(x);
+        var newSnippets = filterSnippets(search);
+        setSnippets(newSnippets);
         break;
     }
 

@@ -1,0 +1,55 @@
+#confirm-modal-container {
+    positioN: absolute;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.450);
+    z-index: 3;
+    user-select: none;
+
+    animation: fade 0.2s ease-in;
+}
+#confirm-modal {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    max-height: 900px;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    pointer-events: all;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    opacity: 100%;
+
+    text-align: center;
+}
+#confirm-modal-buttons {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+#confirm-modal button {
+    width: 100px;
+}
+
+.fade {
+    animation: fade 0.2s ease-in;
+}
+
+@keyframes fade {
+    0% { opacity: 0%; }
+    25% { opacity: 25%; }
+    50% { opacity: 50%; }
+    75% { opacity: 75%; }
+    100% { opacity: 100%; }
+}
+

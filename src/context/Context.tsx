@@ -17,22 +17,34 @@ interface IState {
     },
     saveModal: {
         modalActive: boolean
-        name: string,
-        code: string,
+        name: string
+        code: string
     },
+    confirmModal: {
+        modalActive: boolean
+        message: string
+        function: Function
+    }
     snippets: ISnippets
 }
 
 interface IGlobalProps {
     openSettings(): void;
     closeSettings(): void;
+
     saveSettingsToLocalStorage(setting: any, newValue: any): void;
-    displayFeedbackModal(type: string, message: string): void;
-    closeFeedbackModal(): void;
-    displaySaveModal(code: string): void;
-    closeSaveModal(): void;
     getSnippetsFromLocalStorage(): ISnippet[];
     saveSnippetsToLocalStorage(snippet: ISnippet): void;
+    removeSnippet(id: number): void;
+
+    displayFeedbackModal(type: string, message: string): void;
+    closeFeedbackModal(): void;
+
+    displaySaveModal(code: string): void;
+    closeSaveModal(): void;
+
+    displayConfirmModal(message:string, action:Function): void;
+    closeConfirmModal(): void
     State: IState;
 }
 
@@ -53,6 +65,11 @@ export function ContextProvider(props: { children: ReactNode }) {
             modalActive: false,
             name: '',
             code: ''
+        },
+        confirmModal: {
+            modalActive: false,
+            message: '',
+            function: ()=>{}
         },
         snippets: getSnippetsFromLocalStorage()
     });
@@ -107,6 +124,27 @@ export function ContextProvider(props: { children: ReactNode }) {
         } else {
             // Return an empty array if no data is found in localStorage
             return [];
+        }
+    }
+
+    function removeSnippet(id: number) {
+        try {
+            const storedData: string | null = localStorage.getItem('snippets');
+            if (storedData) {
+                const parsedData: any[] = JSON.parse(storedData);
+                const updatedData = parsedData.filter(item => item.id !== id);
+                setState(prevState => ({
+                    ...prevState,
+                    snippets: updatedData
+                }));
+                localStorage.setItem('snippets', JSON.stringify(updatedData));
+                console.log(`Item with ID ${id} removed from local storage successfully.`);
+
+            } else {
+                console.log(`No data found in local storage for key: ${id}`);
+            }
+        } catch (error) {
+            console.error(`Error occurred while removing item with ID ${id} from local storage:`, error);
         }
     }
 
@@ -199,18 +237,48 @@ export function ContextProvider(props: { children: ReactNode }) {
         }));
     }
 
+    function displayConfirmModal(message: string, action: Function) {
+        setState(prevState => ({
+            ...prevState,
+            confirmModal: {
+                modalActive: true,
+                message: message,
+                function: action
+            }
+        }));
+    }
+    function closeConfirmModal() {
+        setState(prevState => ({
+            ...prevState,
+            confirmModal: {
+                modalActive: false,
+                message: '',
+                function: ()=>{}
+            }
+        }));
+    }
+
     return (
         <Context.Provider 
         value={{ 
             saveSnippetsToLocalStorage,
             getSnippetsFromLocalStorage,
+            saveSettingsToLocalStorage,
+            removeSnippet,
+
             openSettings,
             closeSettings, 
-            saveSettingsToLocalStorage,
+            
             displayFeedbackModal, 
             closeFeedbackModal, 
+
             displaySaveModal, 
             closeSaveModal, 
+
+            displayConfirmModal,
+            closeConfirmModal,
+
+
             State }}>
             {props.children}
         </Context.Provider>
