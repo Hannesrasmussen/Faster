@@ -8,6 +8,7 @@ interface IState {
     settingsActive: boolean
     settings: {
         defaultLanguage: string
+        modalsActive: boolean
     },
     feedbackModal: {
         modalActive: boolean
@@ -31,6 +32,7 @@ interface IState {
 interface IGlobalProps {
     openSettings(): void;
     closeSettings(): void;
+    toggleModals(bool: boolean): void;
 
     saveSettingsToLocalStorage(setting: any, newValue: any): void;
     getSnippetsFromLocalStorage(): ISnippet[];
@@ -106,6 +108,17 @@ export function ContextProvider(props: { children: ReactNode }) {
                 [setting]: newValue
             }
         } as IState));
+    }
+
+    function toggleModals(bool: boolean) {
+        alert("STINK")
+        setState(prevState => ({
+            ...prevState,
+            settings: {
+                ...prevState.settings,
+                modalsActive: bool
+            }
+        }));
     }
     
 
@@ -189,6 +202,7 @@ export function ContextProvider(props: { children: ReactNode }) {
     }
 
     function displayFeedbackModal(type: string, message: string) {
+        if (State.settings.modalsActive === true) {
         setState(prevState => ({
             ...prevState,
             feedbackModal: {
@@ -198,6 +212,9 @@ export function ContextProvider(props: { children: ReactNode }) {
                 modalOpacity:'100%'
             }
         }));
+        } else {
+            return
+        }
     }
 
     // Add effects some other time
@@ -268,6 +285,7 @@ export function ContextProvider(props: { children: ReactNode }) {
 
             openSettings,
             closeSettings, 
+            toggleModals,
             
             displayFeedbackModal, 
             closeFeedbackModal, 
