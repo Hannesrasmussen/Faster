@@ -67,7 +67,7 @@ function Settings(props: ISettings ) {
           <Section header={'Other Settings'}>
             <div className='settings-content-subsection'>
               <ToggleButton active={context.State.settings.modalsActive} function={toggleFeedbackModal}></ToggleButton>
-              <p>Turn {context.State.settings.modalsActive ? 'off ' : 'on '} feedback?</p>
+              <p>Select whether or not to display feedback modal</p>
             </div>
           </Section>
 

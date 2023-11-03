@@ -70,7 +70,7 @@ function SaveModal(props: ISaveModal) {
       
         <div className='save-modal-section'>
           <p className={'save-modal-heading'}>Name</p>
-          <input id={'save-modal-name'} onChange={function(e){updateName(e)}} className={'save-modal-input'}></input>
+          <input id={'save-modal-name'} maxLength={100} onChange={function(e){updateName(e)}} className={'save-modal-input'}></input>
 
           <p className={'save-modal-heading'}>Programming Language</p>
           <Select defaultValue={context.State.settings.defaultLanguage} className={'save-modal-select'}function={function(e:any){updateLanguage(e)}}>
@@ -101,6 +101,9 @@ function SaveModal(props: ISaveModal) {
             function={function(){
               if (State.name === ''){
                 context?.displayFeedbackModal('warning','The name field is empty!')
+                return;
+              } else if (State.name.length > 100) {
+                context?.displayFeedbackModal('warning','The name is too long!')
                 return;
               } else {
                 context?.closeSaveModal()

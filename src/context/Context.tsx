@@ -111,7 +111,6 @@ export function ContextProvider(props: { children: ReactNode }) {
     }
 
     function toggleModals(bool: boolean) {
-        alert("STINK")
         setState(prevState => ({
             ...prevState,
             settings: {
@@ -151,10 +150,6 @@ export function ContextProvider(props: { children: ReactNode }) {
                     snippets: updatedData
                 }));
                 localStorage.setItem('snippets', JSON.stringify(updatedData));
-                console.log(`Item with ID ${id} removed from local storage successfully.`);
-
-            } else {
-                console.log(`No data found in local storage for key: ${id}`);
             }
         } catch (error) {
             console.error(`Error occurred while removing item with ID ${id} from local storage:`, error);
