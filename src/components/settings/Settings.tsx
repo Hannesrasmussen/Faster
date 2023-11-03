@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useContext} from 'react'
 
 // Components
 import NormalButton from '../misc/buttons/NormalButton'
@@ -9,14 +9,19 @@ import { Context } from '../../context/Context';
 
 import './Settings.css'
 import Select from '../misc/select/Select';
+import ToggleButton from '../misc/buttons/ToggleButton';
 
 interface ISettings {
   active: boolean;
 }
 
 function Settings(props: ISettings ) {
-
+  
   const context = useContext(Context);
+
+  useEffect(() => {
+  }, [context]);
+
   if (!context) {
     // In case context is undefined. It never is... but.. y'know.. typescript
     return null;
@@ -30,6 +35,10 @@ function Settings(props: ISettings ) {
 
   function changeDefaultLanguage(e: any) {
     context?.saveSettingsToLocalStorage('defaultLanguage', e.target.value)
+  }
+
+  function toggleFeedbackModal() {
+    context?.toggleModals(!context.State.settings.modalsActive)
   }
 
   return (
@@ -53,6 +62,12 @@ function Settings(props: ISettings ) {
                 <option>C++</option>
               </Select>
               <p>Select default programming language</p>
+            </div>
+          </Section>
+          <Section header={'Other Settings'}>
+            <div className='settings-content-subsection'>
+              <ToggleButton active={context.State.settings.modalsActive} function={toggleFeedbackModal}></ToggleButton>
+              <p>Turn {context.State.settings.modalsActive ? 'off ' : 'on '} feedback?</p>
             </div>
           </Section>
 

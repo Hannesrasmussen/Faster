@@ -1,6 +1,6 @@
 #snippet-container {
     width: 50%;
-    height: fit-content;
+    height: 100%;
     max-height: 700px;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -43,7 +43,7 @@
 
 #snippets {
     display: flex;
-    max-height: fit-content;
+    max-height: 90%;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;

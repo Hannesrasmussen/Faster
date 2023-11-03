@@ -95,3 +95,32 @@ button {
     font-family: Montserrat;
     font-weight: 600;
 }
+
+.toggle-button {
+    display: flex;
+    border-radius: 5px;
+    border: solid 1px rgb(209, 209, 209);
+    background-color: white;
+    width: 70px;
+    height: 25px;
+    padding: 2px;
+    margin: 10px;
+    transition: 0.5s;
+}
+
+.toggle-button-inactive{
+    justify-content: left;
+    background-color: rgb(206, 206, 206);
+
+}
+.toggle-button-active{
+    justify-content: right;
+    background-color: rgb(186, 97, 97);
+}
+.toggle-button-ball {
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+}
