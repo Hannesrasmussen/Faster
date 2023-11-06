@@ -12,6 +12,7 @@ button {
 } button:hover {
     border-color: grey;
     color: grey;
+    cursor: pointer;
 }
 
 .expand-button, .expand-button-active{
@@ -123,4 +124,7 @@ button {
     height: 100%;
     background-color: rgb(255, 255, 255);
     border-radius: 2px;
+}
+.toggle-button:hover {
+    cursor:pointer;
 }
