@@ -52,7 +52,7 @@ interface IGlobalProps {
 
 export const Context = createContext<IGlobalProps | undefined>(undefined);
 
-// Creates a bunch of global methods and values accessible to every part of the application
+// Creates a bunch of global functions and values accessible to every part of the application
 export function ContextProvider(props: { children: ReactNode }) {
     const [State, setState] = useState<IState>({
         settingsActive: false,
@@ -145,6 +145,7 @@ export function ContextProvider(props: { children: ReactNode }) {
             if (storedData) {
                 const parsedData: any[] = JSON.parse(storedData);
                 const updatedData = parsedData.filter(item => item.id !== id);
+
                 setState(prevState => ({
                     ...prevState,
                     snippets: updatedData
@@ -290,8 +291,7 @@ export function ContextProvider(props: { children: ReactNode }) {
 
             displayConfirmModal,
             closeConfirmModal,
-
-
+            
             State }}>
             {props.children}
         </Context.Provider>
