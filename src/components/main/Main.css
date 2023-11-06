@@ -53,6 +53,8 @@ body {
     flex-direction: row;
     top: 0px;
     bottom: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     width: 100%;
     min-height: 100%;
@@ -107,7 +109,6 @@ button {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #a6a6a6;
-    border: 2px solid white;
     border-radius: 10px;
 }
   
@@ -116,11 +117,18 @@ button {
     background: rgb(66, 66, 66);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     #snippet-container, #pastebox-container {
         min-width: 100%;
+        min-height: 400px;
+    }
+    #snippets {
+        min-height: 80%;
     }
     #content {
         flex-direction: column;
+    }
+    #save-modal {
+        transform: scale(0.9);
     }
 }

@@ -42,7 +42,7 @@
 
 #snippets {
     display: flex;
-    max-height: 605px;
+    max-height: 50%;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
