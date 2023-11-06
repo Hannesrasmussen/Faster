@@ -9,6 +9,7 @@ interface IState {
     settings: {
         defaultLanguage: string
         modalsActive: boolean
+        includeCodeInSearch: boolean
     },
     feedbackModal: {
         modalActive: boolean
@@ -32,9 +33,9 @@ interface IState {
 interface IGlobalProps {
     openSettings(): void;
     closeSettings(): void;
-    toggleModals(bool: boolean): void;
+    settingsToggle(setting: string, bool: boolean): void;
 
-    saveSettingsToLocalStorage(setting: any, newValue: any): void;
+    saveSettingsToLocalStorage(setting: string, newValue: any): void;
     getSnippetsFromLocalStorage(): ISnippet[];
     saveSnippetsToLocalStorage(snippet: ISnippet): void;
     removeSnippet(id: number): void;
@@ -110,12 +111,12 @@ export function ContextProvider(props: { children: ReactNode }) {
         } as IState));
     }
 
-    function toggleModals(bool: boolean) {
+    function settingsToggle(setting: string, bool: boolean) {
         setState(prevState => ({
             ...prevState,
             settings: {
                 ...prevState.settings,
-                modalsActive: bool
+                [setting]: bool
             }
         }));
     }
@@ -281,7 +282,7 @@ export function ContextProvider(props: { children: ReactNode }) {
 
             openSettings,
             closeSettings, 
-            toggleModals,
+            settingsToggle,
             
             displayFeedbackModal, 
             closeFeedbackModal, 

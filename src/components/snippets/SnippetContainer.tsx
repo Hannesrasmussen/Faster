@@ -84,13 +84,22 @@ function SnippetContainer() {
     const filteredSnippets: ISnippet[] = [];
     
     (context.State.snippets as ISnippet[]).forEach((snippet: ISnippet) => {
-        const snippetNameLower = snippet.name.toLowerCase();
+      if (context.State.settings.includeCodeInSearch === true) {
         const snippetCodeLower = snippet.code.toLowerCase();
+        const snippetNameLower = snippet.name.toLowerCase();
         const keywordLower = keyword.toLowerCase();
 
         if (snippetNameLower.includes(keywordLower) || snippetCodeLower.includes(keywordLower)) {
+          filteredSnippets.push(snippet);
+        }
+      } else {
+        const snippetNameLower = snippet.name.toLowerCase();
+        const keywordLower = keyword.toLowerCase();
+
+        if (snippetNameLower.includes(keywordLower)) {
             filteredSnippets.push(snippet);
         }
+      } 
     });
     return filteredSnippets;
   }
