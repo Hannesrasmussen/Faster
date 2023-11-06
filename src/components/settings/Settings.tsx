@@ -38,7 +38,10 @@ function Settings(props: ISettings ) {
   }
 
   function toggleFeedbackModal() {
-    context?.toggleModals(!context.State.settings.modalsActive)
+    context?.settingsToggle('modalsActive',!context.State.settings.modalsActive)
+  }
+  function toggleIncludeCodeInSearch() {
+    context?.settingsToggle('includeCodeInSearch',!context.State.settings.includeCodeInSearch)
   }
 
   return (
@@ -51,7 +54,7 @@ function Settings(props: ISettings ) {
         </div>
         <div id='settings-content'>
 
-          <Section header={'General Settings'}>
+          <Section header={'General settings'}>
             <div className='settings-content-subsection'>
               <Select defaultValue={context.State.settings.defaultLanguage} function={changeDefaultLanguage}>
                 <option>Javascript</option>
@@ -64,10 +67,16 @@ function Settings(props: ISettings ) {
               <p>Select default programming language</p>
             </div>
           </Section>
-          <Section header={'Other Settings'}>
+          <Section header={'Search settings'}>
+            <div className='settings-content-subsection'>
+              <ToggleButton active={context.State.settings.includeCodeInSearch} function={toggleIncludeCodeInSearch}></ToggleButton>
+              <p>Also include code when searching</p>
+            </div>
+          </Section>
+          <Section header={'Other settings'}>
             <div className='settings-content-subsection'>
               <ToggleButton active={context.State.settings.modalsActive} function={toggleFeedbackModal}></ToggleButton>
-              <p>Select whether or not to display feedback modal</p>
+              <p>Turn off feedback modals</p>
             </div>
           </Section>
 
