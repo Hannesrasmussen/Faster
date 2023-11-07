@@ -1,6 +1,7 @@
 #snippet-container {
     width: 50%;
-    height: 100%;
+    max-height: 100%;
+    height: fit-content;
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -42,7 +43,7 @@
 
 #snippets {
     display: flex;
-    max-height: 605px;
+    max-height: 700px;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
@@ -91,6 +92,7 @@
 }
 .snippet-content {
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: center;
   display: none;
@@ -101,8 +103,12 @@
   padding: 10px;
   margin: 0;
   width: 90%;
+  max-width: 90%;
   font-size: 10px;
+  box-sizing: border-box;
+  text-align: left;
   white-space: pre-line;
+  overflow-wrap: break-word;
 }.snippet-code:hover {
   cursor:text;
 }
@@ -129,6 +135,7 @@
   padding: 10px;
   box-sizing: border-box;
   width: 10%;
+  min-width: 10%;
 }.snippet-toolbar {
   cursor: default;
 }

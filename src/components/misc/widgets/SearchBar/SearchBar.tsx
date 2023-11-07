@@ -23,12 +23,11 @@ function SearchBar(props: ISearchBar) {
 
     function updateSearchValue(e:any) {
         setSearchState(e.target.value)
-        props.function();
     }
 
     return (
         <div id='searchbar'>
-            <input 
+            <input
                 onChange={function(e){updateSearchValue(e)}} 
                 value={searchState} 
                 placeholder='Search..'

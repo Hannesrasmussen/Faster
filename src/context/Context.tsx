@@ -96,7 +96,9 @@ export function ContextProvider(props: { children: ReactNode }) {
         } else {
             // Default settings:
             let defaultSettings = {
-                defaultLanguage: 'Javascript'
+                defaultLanguage: 'Javascript',
+                modalsActive: true,
+                includeCodeInSearch: false
             }
             localStorage.setItem('settings',JSON.stringify(defaultSettings));
         }
