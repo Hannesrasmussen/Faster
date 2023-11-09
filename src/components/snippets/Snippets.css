@@ -20,6 +20,10 @@
   user-select: none;
 }
 
+.snippet-container-whitespace {
+  height: 20px;
+}
+
  /* width */
  ::-webkit-scrollbar {
     width: 10px;
@@ -87,7 +91,7 @@
 
 .snippet-text {
   color: rgb(255, 255, 255);
-  font-weight: 300;
+  font-weight: 600;
   width:80%;
   margin: none;
   vertical-align: top;
@@ -123,7 +127,7 @@
   text-align: center;
   padding: 10%;
   margin: 0;
-  color: grey;
+  color: rgb(0, 0, 0);
   border-radius: 5px;
   font-family: Montserrat;
   font-weight: 300;
@@ -166,4 +170,14 @@
   color: rgb(255, 255, 255);
   height: 100%;
   width: 100%;
+}
+
+#clear-tags-button {
+  text-decoration: underline;
+  font-size: 12px;
+  text-align: left;
+  width: fit-content;
+}#clear-tags-button:hover {
+  cursor:pointer;
+  color: red;
 }

@@ -7,7 +7,7 @@ import NormalButton from '../misc/buttons/NormalButton';
 import SnippetTags from './subComponents/SnippetTags';
 
 // Interfaces
-import ISnippet from '../../data/interfaces';
+import {ISnippet} from '../../data/interfaces';
 
 // Context
 import { Context } from '../../context/Context';
@@ -19,12 +19,12 @@ function SnippetContainer() {
   const context = useContext(Context);
 
   // All Snippets, visible or not.
-  const [AllSnippets, setAllSnippets] = useState<ISnippet[]>(context!.getSnippetsFromLocalStorage);
+  const [AllSnippets, setAllSnippets] = useState<ISnippet[]>(context!.getFromLocalStorage('snippets'));
   // Search term. Updates when the search bar's value is changed. Starts off empty.
   const [Search, setSearch] = useState<string>('');
 
   useEffect(() => {
-    setAllSnippets(context!.getSnippetsFromLocalStorage)
+    setAllSnippets(context!.getFromLocalStorage('snippets'))
   }, [context])
   useEffect(() => {
   }, [AllSnippets, Search]);
@@ -104,6 +104,9 @@ function SnippetContainer() {
       />
       <p className='snippet-container-heading'>Filter with tags</p>
       <SnippetTags/>
+      <NormalButton class='clear-tags-button'text='Clear all' function={()=>{}}></NormalButton>
+      <div className='snippet-container-whitespace'></div>
+      <p className='snippet-container-heading'>Code snippets</p>
       <div id='snippets'>
         {renderSnippets()}
       </div>

@@ -44,10 +44,13 @@ body {
 }
 
 #content {
-    background-color: rgb(239, 239, 239);
+    position: fixed;
+    background-color: rgb(255, 255, 255);
     /*background-color: rgb(0, 0, 0);*/
     background-image: url(../../img/bgrd.png);
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -78,8 +81,6 @@ body {
     background-color: rgb(255, 255, 255);
     color: black;
     border-radius: 5px;
-    min-width: 400px;
-    max-width: 700px;
     height: fit-content;
     max-height: 700px;
     min-height: fit-content;

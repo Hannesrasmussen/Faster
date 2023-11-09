@@ -9,7 +9,7 @@ import Select from '../../select/Select';
 import { Context } from '../../../../context/Context'
 
 // Interface
-import ISnippet from '../../../../data/interfaces'
+import {ISnippet} from '../../../../data/interfaces'
 
 import './SaveModal.css'
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, ReactNode } from 'react';
 
 // Interfaces
-import ISnippet from '../data/interfaces';
+import {ISnippet, ITag} from '../data/interfaces';
 import { ISnippets } from '../data/types';
 
 interface IState {
@@ -28,6 +28,7 @@ interface IState {
         function: Function
     }
     snippets: ISnippets
+    tags: string[]
 }
 
 interface IGlobalProps {
@@ -36,7 +37,7 @@ interface IGlobalProps {
     settingsToggle(setting: string, bool: boolean): void;
 
     saveSettingsToLocalStorage(setting: string, newValue: any): void;
-    getSnippetsFromLocalStorage(): ISnippet[];
+    getFromLocalStorage(key: string): any[]; // Should rather be something like: string[] | ISnippets
     saveSnippetsToLocalStorage(snippet: ISnippet): void;
     removeSnippet(id: number): void;
 
@@ -74,7 +75,8 @@ export function ContextProvider(props: { children: ReactNode }) {
             message: '',
             function: ()=>{}
         },
-        snippets: getSnippetsFromLocalStorage()
+        snippets: getFromLocalStorage('snippets'),
+        tags: getFromLocalStorage('tags')
     });
 
     useEffect(() => {
@@ -124,8 +126,8 @@ export function ContextProvider(props: { children: ReactNode }) {
     }
     
 
-    function getSnippetsFromLocalStorage(): ISnippet[] {
-        const storedData: string | null = localStorage.getItem("snippets");
+    function getFromLocalStorage(key: string) {
+        const storedData: string | null = localStorage.getItem(key);
         
         if (storedData) {
             try {
@@ -278,7 +280,7 @@ export function ContextProvider(props: { children: ReactNode }) {
         <Context.Provider 
         value={{ 
             saveSnippetsToLocalStorage,
-            getSnippetsFromLocalStorage,
+            getFromLocalStorage,
             saveSettingsToLocalStorage,
             removeSnippet,
 

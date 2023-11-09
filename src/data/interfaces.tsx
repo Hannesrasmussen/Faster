@@ -1,9 +1,14 @@
 // Interfaces that may be used across the application are to be put here!
 
-export default interface ISnippet {
+export interface ISnippet {
     id: number,
     name: string,
     code: string,
     color: string,
     language: string
+}
+
+export interface ITag {
+    id: number,
+    name: string
 }

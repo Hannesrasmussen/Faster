@@ -10,7 +10,7 @@ import { IoMdTrash } from 'react-icons/io'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 
 // Interfaces 
-import ISnippet from '../../data/interfaces' ;
+import {ISnippet} from '../../data/interfaces' ;
 
 function Snippet(props: ISnippet) {
 
