@@ -48,6 +48,9 @@
     overflow-y: auto;
     overflow-x: hidden;
     background: whitesmoke;
+
+    border: solid 1px rgb(220, 220, 220);
+    border-radius: 5px;
 }
 
 .snippet {

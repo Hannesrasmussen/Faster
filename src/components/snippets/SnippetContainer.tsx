@@ -4,6 +4,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import Snippet from './Snippet'
 import SearchBar from '../misc/widgets/SearchBar/SearchBar';
 import NormalButton from '../misc/buttons/NormalButton';
+import SnippetTags from './subComponents/SnippetTags';
 
 // Interfaces
 import ISnippet from '../../data/interfaces';
@@ -66,19 +67,29 @@ function SnippetContainer() {
     } else {
       tempSnippets = AllSnippets
     }
-    
-    return tempSnippets!.map((snippet) => {
+
+    if(tempSnippets.length === 0) {
       return (
-        <Snippet
-            key={snippet.id}
-            id={snippet.id}
-            name={snippet.name}
-            language={snippet.language}
-            code={snippet.code}
-            color={snippet.color}
-        />
-      );
-    });
+        <div className='no-snippets-found'>
+            No code matched search: '{Search}'
+        </div>
+      )
+    } else {
+      return tempSnippets!.map((snippet) => {
+        return (
+          <Snippet
+              key={snippet.id}
+              id={snippet.id}
+              name={snippet.name}
+              language={snippet.language}
+              code={snippet.code}
+              color={snippet.color}
+          />
+        );
+      });
+    }
+    
+    
   }
 
   function importSnippets(){
@@ -91,6 +102,8 @@ function SnippetContainer() {
       <SearchBar 
         function={setSearch} 
       />
+      <p className='snippet-container-heading'>Filter with tags</p>
+      <SnippetTags/>
       <div id='snippets'>
         {renderSnippets()}
       </div>

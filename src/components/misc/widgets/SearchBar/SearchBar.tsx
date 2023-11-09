@@ -28,6 +28,7 @@ function SearchBar(props: ISearchBar) {
     return (
         <div id='searchbar'>
             <input
+                maxLength={100}
                 onChange={function(e){updateSearchValue(e)}} 
                 value={searchState} 
                 placeholder='Search..'

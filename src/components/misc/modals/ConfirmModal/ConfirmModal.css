@@ -32,6 +32,7 @@
 }
 #confirm-modal-buttons {
     background-color: whitesmoke;
+    border: solid 1px rgb(220, 220, 220);
     border-radius: 5px;
     padding: 10px;
     display: flex;
