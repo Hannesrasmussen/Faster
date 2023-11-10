@@ -35,7 +35,6 @@
     width: fit-content;
     height: fit-content;
     user-select: none;
-    margin-left: 5px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -51,8 +50,8 @@
 .remove-snippet-tag {
     height: 15px;
     width: 15px;
-    line-height: 18px;
     margin-left: 5px;
+    line-height: 18px;
     box-sizing: border-box;
     border-radius: 50%;
     background-color: rgb(170, 170, 170);

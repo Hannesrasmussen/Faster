@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: row;
     justify-content: right;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 #save-modal-footer {
     display: flex;
@@ -49,9 +49,8 @@
 }
 
 .save-modal .close-button{
-    height: 30px;
+    height: fit-content;
     padding: 5px;
-    margin-left: 20px;
     box-sizing: border-box;
     width: 50px;
     background-color: black;

@@ -7,7 +7,7 @@ import NormalButton from '../misc/buttons/NormalButton';
 import SnippetTags from './subComponents/SnippetTags';
 
 // Interfaces
-import {ISnippet} from '../../data/interfaces';
+import {ISnippet, ITag} from '../../data/interfaces';
 
 // Context
 import { Context } from '../../context/Context';
@@ -22,6 +22,8 @@ function SnippetContainer() {
   const [AllSnippets, setAllSnippets] = useState<ISnippet[]>(context!.getFromLocalStorage('snippets'));
   // Search term. Updates when the search bar's value is changed. Starts off empty.
   const [Search, setSearch] = useState<string>('');
+  // All tags currently enabled.
+  const [Tags, setTags] = useState<ITag[]>(context!.getFromLocalStorage('tags'));
 
   useEffect(() => {
     setAllSnippets(context!.getFromLocalStorage('snippets'))
@@ -88,12 +90,15 @@ function SnippetContainer() {
         );
       });
     }
-    
-    
   }
 
   function importSnippets(){
     context!.displayFeedbackModal('error','This function has not been added yet!')
+  }
+
+  let displayClearButton = false;
+  if (Tags.length !== 0) {
+    displayClearButton = true;
   }
 
   return (
@@ -103,8 +108,10 @@ function SnippetContainer() {
         function={setSearch} 
       />
       <p className='snippet-container-heading'>Filter with tags</p>
-      <SnippetTags/>
-      <NormalButton class='clear-tags-button'text='Clear all' function={()=>{}}></NormalButton>
+      <SnippetTags tags={Tags} function={()=>{}}/>
+      {displayClearButton ? 
+      <div id='clear-tags-button' onClick={()=>{}}>Clear all</div>
+      : ''}
       <div className='snippet-container-whitespace'></div>
       <p className='snippet-container-heading'>Code snippets</p>
       <div id='snippets'>

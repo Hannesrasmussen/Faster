@@ -1,25 +1,30 @@
 import React, {useState, useContext} from 'react'
 
-
-
 // Components
 import NormalButton from '../../misc/buttons/NormalButton'
 import {RxCross2} from 'react-icons/rx'
 
-import './SnippetTags.css'
+// Interface
+import { ITag } from '../../../data/interfaces'
+
+// Context
 import { Context } from '../../../context/Context'
 
-function SnippetTags() {
+import './SnippetTags.css'
+
+interface ISnippetTags {
+    tags: ITag[]
+    function: Function
+}
+
+function SnippetTags(props: ISnippetTags) {
     const context = useContext(Context)
 
-    const [Tags, setTags] = useState<string[]>(context!.getFromLocalStorage('tags'));
-
     function renderTags() {
-        console.log(Tags)
-        let x = 0;
-        return Tags.map((tags) => {
+        console.log(props.tags)
+        return props.tags.map((tags) => {
             return (
-                <div key={x++}className={'snippet-tag'}>{tags}<div className={'remove-snippet-tag'}><RxCross2/></div></div>
+                <div id={'tag-' + tags.id} className={'snippet-tag'}>{tags.name}<div className={'remove-snippet-tag'}><RxCross2/></div></div>
             );
         });
     }
