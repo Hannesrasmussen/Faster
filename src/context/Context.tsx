@@ -22,6 +22,9 @@ interface IState {
         name: string
         code: string
     },
+    tagsModal: {
+        modalActive: boolean
+    },
     confirmModal: {
         modalActive: boolean
         message: string
@@ -43,6 +46,8 @@ interface IGlobalProps {
 
     displayFeedbackModal(type: string, message: string): void;
     closeFeedbackModal(): void;
+
+    toggleTagsModal(bool: boolean): void;
 
     displaySaveModal(code: string): void;
     closeSaveModal(): void;
@@ -69,6 +74,9 @@ export function ContextProvider(props: { children: ReactNode }) {
             modalActive: false,
             name: '',
             code: ''
+        },
+        tagsModal: {
+            modalActive: false,
         },
         confirmModal: {
             modalActive: false,
@@ -231,8 +239,9 @@ export function ContextProvider(props: { children: ReactNode }) {
         }));
     }
 
+    // The following functions could probably be optimized into one function.
+
     function displaySaveModal(code: string) {
-        // displayFeedbackModal('error','Save function has not been added yet.')
         let snippetCode = code;
 
         setState(prevState => ({
@@ -254,6 +263,16 @@ export function ContextProvider(props: { children: ReactNode }) {
             }
         }));
     }
+
+    function toggleTagsModal(bool: boolean) {
+        setState(prevState => ({
+            ...prevState,
+            tagsModal: {
+                modalActive: bool,
+            }
+        }));
+    }
+    
 
     function displayConfirmModal(message: string, action: Function) {
         setState(prevState => ({
@@ -293,6 +312,8 @@ export function ContextProvider(props: { children: ReactNode }) {
 
             displaySaveModal, 
             closeSaveModal, 
+
+            toggleTagsModal,
 
             displayConfirmModal,
             closeConfirmModal,

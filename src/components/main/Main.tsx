@@ -8,11 +8,13 @@ import SnippetContainer from '../snippets/SnippetContainer'
 import Pastebox from '../pastebox/Pastebox';
 import SettingsButton from '.././misc/buttons/SettingsButton'
 import FeedbackModalContainer from '../misc/modals/FeedbackModal/FeedbackModalContainer';
+import ConfirmModalContainer from '../misc/modals/ConfirmModal/ConfirmModalContainer';
 import SaveModalContainer from '../misc/modals/SaveModal/SaveModalContainer';
+import TagsModalContainer from '../misc/modals/TagsModal/TagsModalContainer';
 import Settings from '../settings/Settings';
 
 import './Main.css';
-import ConfirmModalContainer from '../misc/modals/ConfirmModal/ConfirmModalContainer';
+
 
 
 function Main() {
@@ -33,6 +35,11 @@ function Main() {
       <SaveModalContainer
           close={context.closeSaveModal}
           code={context.State.saveModal.code}/>
+      : ''}
+      {context.State.tagsModal.modalActive ? 
+      <TagsModalContainer
+        function={context.toggleTagsModal}
+      />
       : ''}
       {context.State.confirmModal.modalActive ? 
       <ConfirmModalContainer

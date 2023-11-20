@@ -34,7 +34,7 @@ function SnippetTags(props: ISnippetTags) {
             <ul id='snippet-tags'>
                 {renderTags()}
             </ul>
-            <NormalButton class={'add-tag-button'} text={'Add tags'} function={()=>{}}/>
+            <NormalButton class={'add-tag-button'} text={'Add tags'} function={()=>{context?.toggleTagsModal(true)}}/>
         </div>
     )
 }
