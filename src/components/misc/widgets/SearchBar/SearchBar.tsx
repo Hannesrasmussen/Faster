@@ -1,7 +1,9 @@
 import React, {useState, useContext, useEffect} from 'react'
 
-import './SearchBar.css'
+// Context
 import { Context } from '../../../../context/Context';
+
+import './SearchBar.css'
 
 interface ISearchBar {
     function: Function

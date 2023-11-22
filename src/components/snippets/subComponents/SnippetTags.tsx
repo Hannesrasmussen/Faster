@@ -21,7 +21,6 @@ function SnippetTags(props: ISnippetTags) {
     const context = useContext(Context)
 
     function renderTags() {
-        console.log(props.tags)
         return props.tags.map((tags) => {
             return (
                 <div id={'tag-' + tags.id} className={'snippet-tag'}>{tags.name}<div className={'remove-snippet-tag'}><RxCross2/></div></div>

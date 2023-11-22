@@ -24,10 +24,7 @@ function Snippet(props: ISnippet) {
   }
 
   function expand(active: boolean) {
-    if (snippetContent) {
-      let x = active ? 'flex' : 'none';
-      snippetContent.style.display = x;
-    }
+      snippetContent!.style.display = active ? 'flex' : 'none';
   }
 
   function copy(e: any) {

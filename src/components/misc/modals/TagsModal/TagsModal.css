@@ -22,18 +22,43 @@
     pointer-events: all;
     flex-direction: column;
     border-radius: 5px;
+    box-sizing: border-box;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     opacity: 100%;
 }
 
-#tags-modal-section {
+.tags-modal-section {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     background-color: whitesmoke;
     border-radius: 5px;
     padding: 15px;
+    box-sizing: border-box;
     margin-bottom: 10px;
     height: fit-content;
     width: 100%;
+}
+
+.tags-modal-heading {
+    text-align: left;
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.tags-modal-input {
+    width: 50%;
+    height: 30px;
+    outline: none !important;
+    border: solid 1px rgb(170, 170, 170);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    box-sizing: border-box;
+    font-family: Montserrat;
+    border-radius: 5px;
+    font-weight: 300;
+    text-align: left;
 }

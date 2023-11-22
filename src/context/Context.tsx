@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext, ReactNode } from 'react';
 
 // Interfaces
 import {ISnippet, ITag} from '../data/interfaces';
-import { ISnippets } from '../data/types';
+import { ISnippets, ITags } from '../data/types';
 
 interface IState {
     settingsActive: boolean
@@ -31,7 +31,7 @@ interface IState {
         function: Function
     }
     snippets: ISnippets
-    tags: string[]
+    tags: ITags
 }
 
 interface IGlobalProps {
@@ -42,6 +42,7 @@ interface IGlobalProps {
     saveSettingsToLocalStorage(setting: string, newValue: any): void;
     getFromLocalStorage(key: string): any[]; // Should rather be something like: string[] | ISnippets
     saveSnippetsToLocalStorage(snippet: ISnippet): void;
+    saveTagsToLocalStorage(tag: ITag): void;
     removeSnippet(id: number): void;
 
     displayFeedbackModal(type: string, message: string): void;
@@ -197,6 +198,34 @@ export function ContextProvider(props: { children: ReactNode }) {
         }   
     }
 
+    function saveTagsToLocalStorage(tag: ITag) {
+        console.log(tag)
+        try {
+            if (localStorage) {
+                var existingTags: ITag[] = JSON.parse(localStorage.getItem('tags') || '[]');
+
+                // Find the highest existing id
+                const existingIds = existingTags.map(tag => tag.id);
+                const maxId = Math.max(...existingIds, 0);
+
+                var newTag: ITag = { ...tag, id: maxId + 1 };
+                var newTags: ITag[] = [...existingTags, newTag];
+
+                setState(prevState => ({
+                    ...prevState,
+                    tags: newTags
+                }));
+    
+                localStorage.setItem('tags', JSON.stringify(newTags));
+                displayFeedbackModal('info', 'Successfully added new code!');
+            } else {
+                displayFeedbackModal('error', 'Could not access local storage');
+            }
+        } catch (error) {
+            displayFeedbackModal('error', 'Could not store the code in local storage');
+        }   
+    }
+
     function openSettings() {
         setState(prevState => ({
             ...prevState,
@@ -299,6 +328,7 @@ export function ContextProvider(props: { children: ReactNode }) {
         <Context.Provider 
         value={{ 
             saveSnippetsToLocalStorage,
+            saveTagsToLocalStorage,
             getFromLocalStorage,
             saveSettingsToLocalStorage,
             removeSnippet,
