@@ -27,6 +27,7 @@ function SnippetContainer() {
 
   useEffect(() => {
     setAllSnippets(context!.getFromLocalStorage('snippets'))
+    setTags(context!.getFromLocalStorage('tags'))
   }, [context])
   useEffect(() => {
   }, [AllSnippets, Search]);
@@ -110,7 +111,10 @@ function SnippetContainer() {
       <p className='snippet-container-heading'>Filter with tags</p>
       <SnippetTags tags={Tags} function={()=>{}}/>
       {displayClearButton ? 
-      <div id='clear-tags-button' onClick={()=>{}}>Clear all</div>
+      <div id='clear-tags-button' onClick={()=>{
+        setTags([])
+        context!.clearAllTags();
+      }}>Clear all</div>
       : ''}
       <div className='snippet-container-whitespace'></div>
       <p className='snippet-container-heading'>Code snippets</p>

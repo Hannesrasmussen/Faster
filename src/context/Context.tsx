@@ -49,6 +49,7 @@ interface IGlobalProps {
     closeFeedbackModal(): void;
 
     toggleTagsModal(bool: boolean): void;
+    clearAllTags(): void;
 
     displaySaveModal(code: string): void;
     closeSaveModal(): void;
@@ -167,7 +168,7 @@ export function ContextProvider(props: { children: ReactNode }) {
                 localStorage.setItem('snippets', JSON.stringify(updatedData));
             }
         } catch (error) {
-            console.error(`Error occurred while removing item with ID ${id} from local storage:`, error);
+            displayFeedbackModal('error','Could not remove code snippet');
         }
     }
 
@@ -199,7 +200,6 @@ export function ContextProvider(props: { children: ReactNode }) {
     }
 
     function saveTagsToLocalStorage(tag: ITag) {
-        console.log(tag)
         try {
             if (localStorage) {
                 var existingTags: ITag[] = JSON.parse(localStorage.getItem('tags') || '[]');
@@ -224,6 +224,10 @@ export function ContextProvider(props: { children: ReactNode }) {
         } catch (error) {
             displayFeedbackModal('error', 'Could not store the code in local storage');
         }   
+    }
+
+    function clearAllTags() {
+        localStorage.setItem('tags','')
     }
 
     function openSettings() {
@@ -344,6 +348,7 @@ export function ContextProvider(props: { children: ReactNode }) {
             closeSaveModal, 
 
             toggleTagsModal,
+            clearAllTags,
 
             displayConfirmModal,
             closeConfirmModal,

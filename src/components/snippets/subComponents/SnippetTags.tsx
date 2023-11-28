@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 
 // Components
 import NormalButton from '../../misc/buttons/NormalButton'
@@ -18,7 +18,12 @@ interface ISnippetTags {
 }
 
 function SnippetTags(props: ISnippetTags) {
+
     const context = useContext(Context)
+    
+    useEffect(() => {
+        
+    }, [context]);
 
     function renderTags() {
         return props.tags.map((tags) => {
@@ -33,7 +38,9 @@ function SnippetTags(props: ISnippetTags) {
             <ul id='snippet-tags'>
                 {renderTags()}
             </ul>
-            <NormalButton class={'add-tag-button'} text={'Add tags'} function={()=>{context?.toggleTagsModal(true)}}/>
+            <NormalButton class={'add-tag-button'} text={'Add tags'} function={()=>{
+                context?.toggleTagsModal(true)
+                }}/>
         </div>
     )
 }

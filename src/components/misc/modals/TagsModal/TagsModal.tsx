@@ -13,18 +13,18 @@ import './TagsModal.css'
 
 function TagsModal() {
 
-  const [State, setState] = useState<ITag>({
+  const [Tag, setTag] = useState<ITag>({
     id: 0,
     name: ''
   });
 
     useEffect(() => {
-    }, [State]);
+    }, [Tag]);
 
   const context = useContext(Context);
 
   function save() {
-    context!.saveTagsToLocalStorage(State)
+    context!.saveTagsToLocalStorage(Tag);
     close();
   }
 
@@ -33,7 +33,10 @@ function TagsModal() {
   }
 
   function updateName(e: any) {
-    setState(e.target.value)
+    setTag(prevState => ({
+      ...prevState,
+      name: e.target.value
+  }));
   }
 
   return (
